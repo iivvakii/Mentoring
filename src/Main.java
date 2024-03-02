@@ -1,7 +1,7 @@
-import Task2.Bulldozer;
-import Task2.Machine;
-import Task2.Tractor;
-import Task2.Truck;
+import task2.Bulldozer;
+import task2.Machine;
+import task2.Tractor;
+import task2.Truck;
 
 import java.util.ArrayList;
 
