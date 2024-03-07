@@ -1,57 +1,28 @@
-import java.util.ArrayList;
-import java.util.Arrays;
+import task3.MyDateComparator;
+import task3.Person;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class Main {
-    public static void main(String[] args) {
-        String s = "ver12 nika 43 2 !23 0";
-        System.out.println(Arrays.toString(numberFromString(s)));
-        System.out.println(Arrays.toString(numberFromString("ver12 nika 43 2 !23 0 qenfj &iqef483 wwir2")));
-        System.out.println(Arrays.toString(numberFromString("dnjfbn3431 rignwrin>sfjgj21wgr /e4in44oewfm")));
-
-    }
-
-    static int[] numberFromString(String str){
-        String numStr = "";
-        ArrayList<Integer> arr = new ArrayList<>();
-
-        for (int i = str.length()-1; i >= 0; i--){
-
-            if (Character.isDigit(str.charAt(i))){
-                numStr = str.charAt(i) + numStr;
-
-                if(!Character.isDigit(str.charAt(i-1))){
-                    int a = Integer.parseInt(numStr);
-                    numStr = "";
-                    arr.add(a*2);
-                }
-
-            }
-        }
-        int[] array = new int[arr.size()];
-        for(int i = 0; i < arr.size(); i++){
-            array[i] = arr.get(i);
+    public static void main(String[] args) throws IOException {
+        Set<Person> people = new TreeSet<>(new MyDateComparator());
+        BufferedReader bufferedReader = new BufferedReader(new FileReader("C:/Users/User/OneDrive/Робочий стіл/people.txt"));
+        String current;
+        bufferedReader.readLine();
+        while((current = bufferedReader.readLine()) != null){
+            String[] infoPerson = current.split(" ");
+            people.add(new Person(infoPerson[0], infoPerson[1], infoPerson[2]));
         }
 
-        return sort(array);
-
-
-    }
-
-    static int[] sort(int[] arr){
-        for(int i = 0; i < arr.length; i++){
-            int value = arr[i];
-            int j = i - 1;
-            for (;j >= 0; j--){
-                if(value < arr[j]){
-                    arr[j+1] = arr[j];
-                }
-                else {
-                    break;
-                }
-            }
-            arr[j+1] = value;
+        for (Person person : people){
+            System.out.println(person);
         }
-        return arr;
     }
+
+
 
 }
