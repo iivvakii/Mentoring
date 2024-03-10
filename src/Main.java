@@ -4,13 +4,21 @@ import task3.Person;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
 public class Main {
     public static void main(String[] args) throws IOException {
+
+
         Set<Person> people = new TreeSet<>(new MyDateComparator());
-        BufferedReader bufferedReader = new BufferedReader(new FileReader("C:/Users/User/OneDrive/Робочий стіл/people.txt"));
+        Path path = Paths.get("C:/Users/User/OneDrive/Робочий стіл/people.txt");
+        BufferedReader bufferedReader = Files.newBufferedReader(path);
         String current;
         bufferedReader.readLine();
         while((current = bufferedReader.readLine()) != null){
@@ -21,7 +29,16 @@ public class Main {
         for (Person person : people){
             System.out.println(person);
         }
+
+
+
+
+
+
+
     }
+
+
 
 
 
