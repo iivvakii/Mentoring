@@ -35,16 +35,15 @@ public class Main {
             System.out.println(person);
         }
     }
+}
 
-
-    public static void checkAge(String date) throws AgeExeption {
+   public static void checkAge(String date) throws AgeExeption {
         String[] dates = date.split("\\.");
         LocalDate birthdate = LocalDate.of(Integer.parseInt(dates[2]), Integer.parseInt(dates[1]), Integer.parseInt(dates[0]));
         LocalDate currentDate = LocalDate.now();
         Period period = Period.between(birthdate, currentDate);
 
-        // Print Age
-//        System.out.println("Age: " + period.getYears() + " years");
+       
         if(period.getYears() < 18){
             throw new AgeExeption("You must be 18+.");
         }
@@ -59,4 +58,3 @@ public class Main {
             throw new NameExeption("This name does not have enough letters");
         }
     }
-}
