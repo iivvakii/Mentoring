@@ -1,25 +1,35 @@
-import task2.Bulldozer;
-import task2.Machine;
-import task2.Tractor;
-import task2.Truck;
+import task3.MyDateComparator;
+import task3.Person;
 
-import java.util.ArrayList;
-
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class Main {
-    public static void main(String[] args) {
-        ArrayList<Machine> arr = new ArrayList<>();
-        arr.add(new Bulldozer("Bull", 2006));
-        arr.add(new Tractor("Tractor", 1984));
-        arr.add(new Truck("Truck", 2021));
+    public static void main(String[] args) throws IOException {
 
-        for(Machine machine : arr){
-            machine.begin();
+
+        Set<Person> people = new TreeSet<>(new MyDateComparator());
+        Path path = Paths.get("C:/Users/User/OneDrive/Робочий стіл/people.txt");
+        BufferedReader bufferedReader = Files.newBufferedReader(path);
+        String current;
+        bufferedReader.readLine();
+        while((current = bufferedReader.readLine()) != null){
+            String[] infoPerson = current.split(" ");
+            people.add(new Person(infoPerson[0], infoPerson[1], infoPerson[2]));
         }
-        System.out.println();
-        for(Machine machine : arr){
-            machine.end();
+
+        for (Person person : people){
+            System.out.println(person);
         }
+
+
     }
-
 }
