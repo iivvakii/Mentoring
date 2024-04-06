@@ -16,7 +16,7 @@ public class Machine {
         return year;
     }
 
-    public  void begin(){
+    public void begin(){
         System.out.println(name + " почав роботу");
     }
 
